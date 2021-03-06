@@ -6,7 +6,7 @@ import { CheckedCheckbox } from './icons/CheckedCheckbox';
 import { UncheckedCheckbox } from './icons/UncheckedCheckbox';
 
 export const TaskList = observer(() => {
-  const { ongoingTasks, completedTasks } = useTaskStore();
+  const { ongoingTasks, completedTasks, toggleTask } = useTaskStore();
 
   return (
     <Box w="100%" h="100%" bgGradient="linear(to-bl, green.200, pink.500)">
@@ -21,24 +21,27 @@ export const TaskList = observer(() => {
         padding="4"
         spacing="6"
       >
-        <Box>
-          <Heading size="lg">Ongoing</Heading>
-          {ongoingTasks.map((task) => {
-            return (
-              <Flex key={task.id} mt="2">
-                <UncheckedCheckbox />
-                <Text ml="2">{task.name}</Text>
-              </Flex>
-            );
-          })}
-        </Box>
+        {ongoingTasks.length === 0 ? undefined : (
+          <Box>
+            <Heading size="lg">Ongoing</Heading>
+
+            {ongoingTasks.map((task) => {
+              return (
+                <Flex key={task.id} mt="2" onClick={() => toggleTask(task.id)}>
+                  <UncheckedCheckbox />
+                  <Text ml="2">{task.name}</Text>
+                </Flex>
+              );
+            })}
+          </Box>
+        )}
 
         {completedTasks.length === 0 ? undefined : (
           <Box>
             <Heading size="lg">Done</Heading>
             {completedTasks.map((task) => {
               return (
-                <Flex key={task.id} mt="2">
+                <Flex key={task.id} mt="2" onClick={() => toggleTask(task.id)}>
                   <CheckedCheckbox />
                   <Text ml="2">{task.name}</Text>
                 </Flex>

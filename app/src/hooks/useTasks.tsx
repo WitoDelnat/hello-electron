@@ -32,6 +32,11 @@ export function createTaskStore() {
     get completedTasks() {
       return this.tasks.filter((task) => task.status === 'done');
     },
+    toggleTask(id: string) {
+      const task = this.tasks.find((t) => t.id === id);
+      if (!task) return;
+      task.status = task.status === 'done' ? 'ongoing' : 'done';
+    },
   };
 }
 
