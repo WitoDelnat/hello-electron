@@ -1,4 +1,5 @@
-import React from 'react';
+import { Button, ChakraProvider } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import icon from '../assets/icon.svg';
 import './App.global.css';
@@ -43,9 +44,12 @@ const Hello = () => {
 export default function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/" component={Hello} />
-      </Switch>
+      <ChakraProvider>
+        <Button onClick={() => console.log('click')}>hello world</Button>
+        <Switch>
+          <Route path="/" component={Hello} />
+        </Switch>
+      </ChakraProvider>
     </Router>
   );
 }
