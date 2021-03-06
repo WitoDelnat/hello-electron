@@ -1,5 +1,6 @@
 import { useLocalStore } from 'mobx-react-lite';
 import React from 'react';
+import { v4 as uuid } from 'uuid';
 
 export type Task = {
   id: string;
@@ -11,17 +12,17 @@ export function createTaskStore() {
   return {
     tasks: [
       {
-        id: '1',
+        id: uuid(),
         name: 'Create app',
         status: 'done',
       },
       {
-        id: '2',
+        id: uuid(),
         name: 'Create API',
         status: 'ongoing',
       },
       {
-        id: '3',
+        id: uuid(),
         name: 'Setup deployment',
         status: 'ongoing',
       },
@@ -36,6 +37,13 @@ export function createTaskStore() {
       const task = this.tasks.find((t) => t.id === id);
       if (!task) return;
       task.status = task.status === 'done' ? 'ongoing' : 'done';
+    },
+    createTask(name: string) {
+      this.tasks.push({
+        id: uuid(),
+        name,
+        status: 'ongoing',
+      });
     },
   };
 }
