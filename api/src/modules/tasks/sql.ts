@@ -1,8 +1,7 @@
-import { entries, isDate, isNil, isObject, isUndefined } from "lodash";
+import { entries, isDate, isNil, isObject } from "lodash";
 import { NotFoundError, SerializableValueType, sql } from "slonik";
 import { errors } from "../../errors";
 import { Database } from "../../utils/database";
-import { logger } from "../../utils/logger";
 import { mutable } from "../../utils/types";
 
 export type Task = {

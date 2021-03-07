@@ -14,14 +14,19 @@ type Query {
 type Task {
   id: ID!
   name: String!
-  status: String!
+  status: TaskStatus!
 }
 
 input TaskCreateInput {
   name: String!
 }
 
+enum TaskStatus {
+  done
+  ongoing
+}
+
 input TaskUpdateStatusInput {
-  status: String!
+  status: TaskStatus!
   taskId: String!
 }
