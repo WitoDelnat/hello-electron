@@ -1,0 +1,5 @@
+config/local.yaml
+dist/**
+docs/**
+k8s/**
+node_modules/**

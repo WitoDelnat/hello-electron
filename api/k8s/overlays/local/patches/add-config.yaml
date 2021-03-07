@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-linear
+spec:
+  selector:
+    matchLabels:
+      app: hello-linear
+  template:
+    spec:
+      containers:
+        - name: hello-linear
+          volumeMounts:
+            - name: hello-linear-config
+              subPath: config.yaml
+              mountPath: /app/config/production.yaml
+      volumes:
+        - name: hello-linear-config
+          configMap:
+            name: hello-linear-config

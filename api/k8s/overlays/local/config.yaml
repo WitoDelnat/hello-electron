@@ -1,0 +1,8 @@
+server:
+  playground: true
+database:
+  host: "database"
+  user: "postgres"
+  password: "postgres"
+logger:
+  level: "debug"

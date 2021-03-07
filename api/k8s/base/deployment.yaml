@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-linear
+  labels:
+    app: hello-linear
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: hello-linear
+  template:
+    metadata:
+      labels:
+        app: hello-linear
+    spec:
+      containers:
+        - name: hello-linear
+          image: hello-linear
+          ports:
+            - name: http-web
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http-web
+            initialDelaySeconds: 15
+          resources:
+            requests:
+              cpu: 150m
+              memory: 200Mi
+            limits:
+              cpu: 300m
+              memory: 400Mi
