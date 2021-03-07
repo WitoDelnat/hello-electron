@@ -1,0 +1,8 @@
+dist/
+docs/
+node_modules/
+nexus.generated.d.ts
+.eslintrc.js
+commitlint.config.js
+jest*
+tsconfig-paths.js
