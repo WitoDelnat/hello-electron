@@ -1,6 +1,12 @@
 server:
   port: 8080
   playground: false
+database:
+  host: null
+  port: 5432
+  name: "api-db"
+  user: null
+  password: null
 logger:
-  level: info
+  level: "info"
   json: true

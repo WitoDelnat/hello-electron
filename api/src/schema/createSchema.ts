@@ -13,5 +13,17 @@ export function createSchema() {
       schema: path.join(__dirname, "../../docs/schema.graphql"),
       typegen: path.join(__dirname, "../nexus.generated.d.ts"),
     },
+    contextType: {
+      module: path.join(__dirname, "./createContext.ts"),
+      export: "Context",
+    },
+    sourceTypes: {
+      modules: [
+        {
+          module: path.join(__dirname, "../modules/tasks/sql.ts"),
+          alias: "Tasks",
+        },
+      ],
+    },
   });
 }

@@ -6,7 +6,13 @@ const noop = async () => {
   return;
 };
 
-export function startProcess(main: () => Promise<void>, shutdown: () => Promise<void> = noop) {
+export function startProcess({
+  main,
+  shutdown = noop,
+}: {
+  main: () => Promise<void>;
+  shutdown: () => Promise<void>;
+}) {
   main().catch(async (err) => {
     logger.fatal(err, "Unexpected shutdown because error.");
     await shutdown();
