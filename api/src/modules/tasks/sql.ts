@@ -11,7 +11,7 @@ export type Task = {
 };
 
 export async function getAllTasks(db: Database): Promise<Task[]> {
-  const tasks = await db.many<Task>(sql`SELECT * FROM "tasks"`);
+  const tasks = await db.any<Task>(sql`SELECT * FROM "tasks"`);
   return mutable(tasks);
 }
 
