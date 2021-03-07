@@ -2,6 +2,11 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  taskCreate(input: TaskCreateInput!): Task!
+  taskUpdateStatus(input: TaskUpdateStatusInput!): Task!
+}
+
 type Query {
   tasks: [Task!]!
 }
@@ -10,4 +15,13 @@ type Task {
   id: ID!
   name: String!
   status: String!
+}
+
+input TaskCreateInput {
+  name: String!
+}
+
+input TaskUpdateStatusInput {
+  status: String!
+  taskId: String!
 }

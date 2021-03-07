@@ -1,5 +1,6 @@
+import { v4 as uuid } from "uuid";
 import { DatabasePool } from "../../utils/database";
-import { getAllTasks, Task } from "./sql";
+import { createTask, getAllTasks, Task, updateTask } from "./sql";
 
 export type TasksModuleInit = {
   database: DatabasePool;
@@ -14,5 +15,16 @@ export class TasksModule {
 
   getAll(): Promise<Task[]> {
     return getAllTasks(this.database);
+  }
+
+  updateStatus(taskId: string, status: Task["status"]): Promise<Task> {
+    return updateTask(this.database, taskId, { status });
+  }
+
+  create({ name }: { name: string }): Promise<Task> {
+    return createTask(this.database, {
+      id: uuid(),
+      name,
+    });
   }
 }
