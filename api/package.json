@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint \"src/**/*.*\" --max-warnings=0",
     "typecheck": "tsc --noEmit",
+    "codegen:tests": "graphql-codegen --config codegen.tests.yml",
     "test": "jest --runInBand",
     "build": "tsc",
     "start": "node ./dist/main.js"
@@ -30,6 +31,11 @@
     "zod": "1.11.11"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.21.2",
+    "@graphql-codegen/near-operation-file-preset": "1.17.13",
+    "@graphql-codegen/typescript": "1.21.1",
+    "@graphql-codegen/typescript-graphql-request": "3.1.0",
+    "@graphql-codegen/typescript-operations": "1.17.15",
     "@types/config": "0.0.38",
     "@types/faker": "5.1.7",
     "@types/jest": "26.0.20",

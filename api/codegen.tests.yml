@@ -1,0 +1,17 @@
+overwrite: true
+schema: "./docs/schema.graphql"
+documents:
+  - "src/**/*.test.ts"
+  - "!src/**/*.generated.ts"
+generates:
+  src/graphqlTypes.test.generated.ts:
+    plugins:
+      - typescript
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.ts
+      baseTypesPath: types.test.generated.ts
+    plugins:
+      - typescript-operations
+      - typescript-graphql-request

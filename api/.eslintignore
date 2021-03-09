@@ -7,3 +7,4 @@ commitlint.config.js
 jest*
 tsconfig-paths.js
 jest.config.js
+**.generated.ts

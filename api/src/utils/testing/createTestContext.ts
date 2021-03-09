@@ -1,12 +1,20 @@
-import { sql } from "slonik";
+import { GraphQLClient } from "graphql-request";
+import { DatabasePoolType, sql } from "slonik";
 import { config } from "../../config";
 import { createServer } from "../../server/createServer";
 import { createDatabasePool, Database } from "../database";
-import { GraphQLClient } from "graphql-request";
 
 const port = config.server.port;
 
-export function createTestContext() {
+export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
+export type GetSdk<T = Record<string, unknown>> = (client: GraphQLClient) => T;
+
+export type Context<SDK extends GetSdk> = {
+  readonly db: DatabasePoolType;
+  readonly client: ReturnType<SDK>;
+};
+
+export function createTestContext<SDK extends GetSdk>(getSdk: SDK): Context<SDK> {
   const database = createDatabasePool({
     host: config.database.host,
     port: config.database.port,
@@ -16,6 +24,7 @@ export function createTestContext() {
   });
   const server = createServer({ database });
   const client = new GraphQLClient(`http://localhost:${port}/graphql`);
+  const sdk = getSdk(client);
 
   beforeAll(async () => {
     await server.ready();
@@ -36,7 +45,7 @@ export function createTestContext() {
       return database;
     },
     get client() {
-      return client;
+      return sdk as ReturnType<SDK>;
     },
   };
 }

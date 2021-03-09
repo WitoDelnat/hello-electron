@@ -1,9 +1,10 @@
-@@ -0,0 +1,70 @@
 dist/
 .vscode/
 .npmrc
 config/local**
 src/nexus.generated.d.ts
+src/types.test.generated.ts
+src/**/**.test.generated.ts
 
 # Created by https://www.gitignore.io/api/node
 
