@@ -1,0 +1,10 @@
+database:
+  host: "localhost"
+  port: 15432
+  name: "api-db"
+  user: "postgres"
+  password: "postgres"
+server:
+  port: 18080
+logger:
+  level: silent
