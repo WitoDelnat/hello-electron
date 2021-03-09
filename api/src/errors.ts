@@ -4,7 +4,7 @@ import { logger } from "./utils/logger";
 export const errors = {
   api: {
     tasks: {
-      notFound: createError("task not found"),
+      notFound: createError("TASK_NOT_FOUND"),
     },
   },
 };
