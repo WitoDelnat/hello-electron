@@ -5,6 +5,11 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/no-unused-expressions': [
+      'error',
+      { allowTaggedTemplates: true },
+    ],
+    '@typescript-eslint/lines-between-class-members': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

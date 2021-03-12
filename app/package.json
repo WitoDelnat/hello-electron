@@ -13,7 +13,8 @@
     "start": "node -r @babel/register ./.erb/scripts/CheckPortInUse.js && cross-env yarn start:renderer",
     "start:main": "cross-env NODE_ENV=development electron -r ./.erb/scripts/BabelRegister ./src/main.dev.ts",
     "start:renderer": "cross-env NODE_ENV=development webpack serve --config ./.erb/configs/webpack.config.renderer.dev.babel.js",
-    "test": "jest"
+    "test": "jest",
+    "codegen": "graphql-codegen"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -172,6 +173,11 @@
     "@babel/preset-react": "^7.12.7",
     "@babel/preset-typescript": "^7.12.7",
     "@babel/register": "^7.12.1",
+    "@graphql-codegen/cli": "1.21.2",
+    "@graphql-codegen/near-operation-file-preset": "1.17.13",
+    "@graphql-codegen/typescript": "1.21.1",
+    "@graphql-codegen/typescript-graphql-request": "3.1.0",
+    "@graphql-codegen/typescript-operations": "1.17.15",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@teamsupercell/typings-for-css-modules-loader": "^2.4.0",
     "@testing-library/jest-dom": "^5.11.6",
@@ -257,6 +263,8 @@
     "electron-log": "^4.2.4",
     "electron-updater": "^4.3.4",
     "framer-motion": "3.10.0",
+    "graphql": "15.5.0",
+    "graphql-request": "3.4.0",
     "history": "^5.0.0",
     "mobx": "6.1.8",
     "mobx-react-lite": "3.2.0",
