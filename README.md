@@ -1,4 +1,4 @@
-# Hello Linear
+# Hello Electron
 
 Small TODO-list application to try out Electron and MobX.
 
